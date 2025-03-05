@@ -1,0 +1,20 @@
+
+Question link:- https://leetcode.com/problems/kids-with-the-greatest-number-of-candies/?envType=study-plan-v2&envId=leetcode-75
+
+Video link:- https://www.youtube.com/watch?v=bz_EdIQjZEA&list=PLDvvnZJ6Hagvfg4t53F6aeTrxu5Cq8C7j&index=1&pp=gAQBiAQB
+
+class Solution {
+public:
+    vector<bool> kidsWithCandies(vector<int>& candies, int extraCandies) {
+        int n = candies.size();
+        int max_candies = 0;
+        for(auto it : candies) max_candies = max(max_candies, it);
+        vector<bool> ans(n, false);
+        for(int i=0; i<n; i++){
+            if(candies[i] + extraCandies >= max_candies){
+                ans[i] = true;
+            }
+        }
+        return ans;
+    }
+};
