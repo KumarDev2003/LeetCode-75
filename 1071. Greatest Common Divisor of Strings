@@ -1,0 +1,45 @@
+
+Question link:- https://leetcode.com/problems/greatest-common-divisor-of-strings/?envType=study-plan-v2&envId=leetcode-75
+
+Video link:- https://www.youtube.com/watch?v=sAPm66xWNR8&list=PLDvvnZJ6Hagvfg4t53F6aeTrxu5Cq8C7j&index=2&t=293s&pp=gAQBiAQB
+
+class Solution {
+public:
+    bool help(string& div, string& s1, string& s2){
+        int m = s1.size();
+        int n = div.size();
+        int i = 0;
+        while(i < m){
+            if(s1.substr(i, n) == div){
+                i += n;
+            }else{
+                return false;
+            }
+        }
+        i = 0;
+        m = s2.size();
+        while(i < m){
+            if(s2.substr(i, n) == div){
+                i += n;
+            }else{
+                return false;
+            }
+        }
+        return true;
+    }
+    string gcdOfStrings(string str1, string str2) {
+        if(str2.size() > str1.size()){
+            return gcdOfStrings(str2, str1);
+        }
+        int m = str1.size();
+        int n = str2.size();
+        int i = 0;
+        for(int i=0; i<n; i++){
+            string div = str2.substr(0, n-i);
+            if(help(div, str2, str1)){
+                return div;
+            }
+        }
+        return "";
+    }
+};
