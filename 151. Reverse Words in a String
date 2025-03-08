@@ -1,0 +1,40 @@
+
+Question link:- https://leetcode.com/problems/reverse-words-in-a-string/?envType=study-plan-v2&envId=leetcode-75
+
+Video link:- https://youtu.be/qIlqNQFTgYQ
+
+class Solution {
+public:
+    void trim(string& ans){
+        string s = ans;
+        string str = "";
+        int n = s.size();
+        int i = 0;
+        while(i < n && isspace(s[i])){
+            i++;
+        }
+        int j = n-1;
+        while(i >= 0 && isspace(s[j])){
+            j--;
+        }
+        ans = s.substr(i, j-i+1);
+    }
+    string reverseWords(string s) {
+        int n = s.size();
+        int i = 0;
+        string ans = "";
+        while(i < n){
+            while(i < n && isspace(s[i])){
+                i++;
+            }
+            string str = "";
+            while(i < n && !isspace(s[i])){
+                str += s[i];
+                i++;
+            }
+            ans = str + " " + ans ;
+        }
+        trim(ans);
+        return ans;
+    }
+};
